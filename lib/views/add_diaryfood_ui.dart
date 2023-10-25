@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, sort_child_properties_last, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -443,11 +443,9 @@ class _AddDiaryfoodUIState extends State<AddDiaryfoodUI> {
                       color: Colors.green,
                     ),
                   ),
-                  child: GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                      target: LatLng(0.0, 0.0),
-                      zoom: 12.0,
-                    ),
+                  child: Image.asset(
+                    'assets/images/map.png' ,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
