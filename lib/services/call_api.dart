@@ -1,18 +1,19 @@
 // ไฟล์นี้เป็นไฟล์ที่ใช้ในการเรียกใช้ api ต่างๆ
 
-// ignore_for_file: unused_local_variable, unused_import
+// ignore_for_file: unused_local_variable, unused_import, prefer_interpolation_to_compose_strings
 
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_diaryfood_app/models/diaryfood.dart';
+import 'package:my_diaryfood_app/utils/env.dart';
 
 class callApi{
   // เมธอดเรียกใช้ API : getall
   static Future<List<Diaryfood>> callAPIGetAllDiaryfood() async {
     final response = await http.get(
-      Uri.parse('http://172.17.36.32/diaryfoodapi/getall'),
+      Uri.parse(Env.domainURL + '/diaryfoodapi/getall'),
       headers: {'Content-Type':'application/json'},
     );
 
@@ -36,7 +37,7 @@ class callApi{
   static Future<String> callAPIInsertDiaryfood(Diaryfood diaryfood) async {
     // เรียกใช้ API
     final response = await http.post(
-      Uri.parse('http://172.17.36.32/diaryfoodapi/insert'),
+      Uri.parse(Env.domainURL + '/diaryfoodapi/insert'),
       body: jsonEncode(diaryfood.toJson()),
       headers: {'Content-Type':'application/json'},
     );
@@ -57,7 +58,7 @@ class callApi{
     
     // เรียกใช้ API
     final response = await http.post(
-      Uri.parse('http://172.17.36.32/diaryfoodapi/update'),
+      Uri.parse(Env.domainURL + '/diaryfoodapi/update'),
       body: jsonEncode(diaryfood.toJson()),
       headers: {'Content-Type':'application/json'},
     );
@@ -78,7 +79,7 @@ class callApi{
     
     // เรียกใช้ API
     final response = await http.post(
-      Uri.parse('http://172.17.36.32/diaryfoodapi/delete'),
+      Uri.parse(Env.domainURL + '/diaryfoodapi/delete'),
       body: jsonEncode(diaryfood.toJson()),
       headers: {'Content-Type':'application/json'},
     );
