@@ -7,6 +7,7 @@ import 'dart:io';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_diaryfood_app/models/diaryfood.dart';
+import 'package:my_diaryfood_app/models/member.dart';
 import 'package:my_diaryfood_app/utils/env.dart';
 
 class callApi{
@@ -54,7 +55,7 @@ class callApi{
   }
 
   // เมธอดเรียกใช้ API : update
-  static Future<Diaryfood> callAPIUpdateDiaryfood(Diaryfood diaryfood) async {
+  static Future<String> callAPIUpdateDiaryfood(Diaryfood diaryfood) async {
     
     // เรียกใช้ API
     final response = await http.post(
@@ -75,7 +76,7 @@ class callApi{
   }
 
   // เมธอดเรียกใช้ API : delete
-  static Future<Diaryfood> callAPIDeleteDiaryfood(Diaryfood diaryfood) async {
+  static Future<String> callAPIDeleteDiaryfood(Diaryfood diaryfood) async {
     
     // เรียกใช้ API
     final response = await http.post(
@@ -90,6 +91,25 @@ class callApi{
 
       // ส่งค่าข้อมูลที่ส่งกลับมาไปที่จุดเรียกเมธอด
       return responseData['message'];
+    } else {
+      throw Exception('Failed to fetch data');
+    }
+  }
+
+  static Future<Member> callAPIChecklogin(Member member) async {
+    // เรียกใช้ API
+    final response = await http.post(
+      Uri.parse(Env.domainURL + '/diaryfoodapi/checklogin'),
+      body: jsonEncode(member.toJson()),
+      headers: {'Content-Type': 'application/json'},
+    );
+ 
+    if (response.statusCode == 200) {
+      // เอาข้อมูลที่ส่งกลับมาเป็น JSON แปลงเป็นข้อมูลที่จะนำมาใช้ในแอป เก็ยไว้ในตัวแปร
+      final responseData = jsonDecode(response.body);
+ 
+      // ส่งค่าข้อมูลที่ส่งกลับมาไปที่จุดเรียกใช้เมธอด
+      return Member.fromJson(responseData);
     } else {
       throw Exception('Failed to fetch data');
     }

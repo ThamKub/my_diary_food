@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:my_diaryfood_app/models/diaryfood.dart';
 import 'package:my_diaryfood_app/services/call_api.dart';
 import 'package:my_diaryfood_app/views/add_diaryfood_ui.dart';
+import 'package:my_diaryfood_app/views/login_ui.dart';
 import 'package:my_diaryfood_app/views/modify_diaryfood_ui.dart';
 
 import '../utils/env.dart';
@@ -46,6 +47,21 @@ class _HomeUIState extends State<HomeUI> {
           style: GoogleFonts.kanit(),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LoginUI(),
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.exit_to_app,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {

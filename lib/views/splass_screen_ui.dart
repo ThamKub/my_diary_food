@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_diaryfood_app/utils/gradient_text.dart';
 import 'package:my_diaryfood_app/views/home_ui.dart';
+import 'package:my_diaryfood_app/views/login_ui.dart';
 
 class SplassScreenUI extends StatefulWidget {
   const SplassScreenUI({super.key});
@@ -29,7 +30,7 @@ class _SplassScreenUIState extends State<SplassScreenUI> {
     ()=>Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => HomeUI(),
+        builder: (context) => LoginUI(),
       ),
     ),
   );

@@ -195,7 +195,7 @@ class _AddDiaryfoodUIState extends State<AddDiaryfoodUI> {
   //ตัวแปลเก็บรูปที่เลือกจาก Gallery หรือ ถ่ายจากกล้อง
   XFile? foodImageSelected;
 
-  String? foodImageBase64;
+  String? foodImageBase64 = '';
 
   //เมธอดที่ใช้เปิดกล้อง หรือเปิดแกลอรี่
   openGalleryAndSelectImage() async {
@@ -428,6 +428,7 @@ class _AddDiaryfoodUIState extends State<AddDiaryfoodUI> {
                 ),
                 child: TextField(
                   controller: foodPayCtrl,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     hintText: 'ป้อนค่าใช้จ่าย',
                     helperStyle: GoogleFonts.kanit(
